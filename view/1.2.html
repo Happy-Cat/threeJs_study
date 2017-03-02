@@ -12,18 +12,19 @@
     <script>
         var scene = new THREE.Scene();          //场景
 
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);        //透视相机
-
+        var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 10, 1000);        //透视相机
+//        var camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -100, 1000 );  //正投影相机
+//        scene.add( camera );
         var renderer = new THREE.WebGLRenderer();               //渲染器
 
         renderer.setSize(window.innerWidth, window.innerHeight);            //设置渲染器的大小为窗口的内宽度
 
         document.body.appendChild(renderer.domElement);                     //渲染器renderer的domElement元素，表示渲染器中的画布，所有的渲染都是画在domElement上的
-        var geometry = new THREE.CubeGeometry(1,1,1);                      //CubeGeometry是一个正方体或者长方体 参数为x,y,z轴
+        var geometry = new THREE.CubeGeometry(100,100,100);                      //CubeGeometry是一个正方体或者长方体 参数为x,y,z轴
         var material = new THREE.MeshBasicMaterial({color: 0x00ff00});     //物体设置颜色 MeshBasicMaterial 基础网格材质
         var cube = new THREE.Mesh(geometry, material);                     //生成物体
         scene.add(cube);                                                    //将物体添加到场景
-        camera.position.z = 5;                                              //在z轴为5的角度查看
+        camera.position.z = 1000;                                              //距离相机中心点的垂直距离
         function render() {
             requestAnimationFrame(render);                                  //这个函数就是让浏览器去执行一次参数中的函数
             cube.rotation.x += 0.1;
